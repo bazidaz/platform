@@ -1,0 +1,36 @@
+li {
+    border:1px solid black;
+    display: inline-block;
+}
+
+#fakeList {
+    border:1px solid black;
+    padding-bottom:204px;
+    padding-left:130px;
+    
+}
+
+img{
+
+    margin-right:-70px;
+}
+figcaption {
+   
+}
+#searchbox {
+    width:600px;
+    height:200px;
+}
+
+p {
+ display:inline;   
+}
+
+.onlyText{
+ margin-left:4px;   
+}
+
+#fake{
+
+  
+}
