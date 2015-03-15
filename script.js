@@ -4,7 +4,7 @@ $('#container').css("height", window.innerHeight+"px");
 $('#container').css("width",window.innerWidth+"px");
 });
 */
-
+var docHeight,doc;
 $(document).ready(function() { 
     $('#get').click(function() {
         $('p').empty();
@@ -14,9 +14,9 @@ $(document).ready(function() {
         $('p').append(winWidth + '<br>');
         $('p').append(winHeight + '<br>');
         
-        var doc=$(document);
+        doc=$(document);
         var docWidth=doc.width();
-        var docHeight=doc.height();
+        docHeight=doc.height();
         $('p').append("docWidth:" +docWidth + '<br>');
         $('p').append("docHeight:" + docHeight + '<br>');
         
@@ -28,9 +28,18 @@ $(document).ready(function() {
           //  $('#box').css("top",200)
       //  }else{
         //    $('p').append("No");
-       // }
         
+       // }
+     
     });
+    
+  $(window).scroll(function() { 
+        if(doc.scrollTop() < docHeight){
+            $('#scroll').text("you are at the bottom of the page");
+        }
+   });
+        
+
 });
 //this model will do the work hopefully
 
