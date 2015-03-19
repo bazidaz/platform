@@ -18,7 +18,7 @@ $(document).ready(function() {
         var docWidth=doc.width();
         docHeight=doc.height();
         $('p').append("docWidth:" +docWidth + '<br>');
-        $('p').append("docHeight:" + docHeight + '<br>');
+        $('p').append("docHeight:" + $(document).height()+ '<br>');
         
         var box=$('#box');
         var boxTop=box.offset().top;
@@ -28,11 +28,10 @@ $(document).ready(function() {
           //  $('#box').css("top",200)
       //  }else{
         //    $('p').append("No");
-        
        // }
      
     });
-    
+
   $(window).scroll(function() { 
         if(doc.scrollTop() < docHeight){
             $('#scroll').text("you are at the bottom of the page");
