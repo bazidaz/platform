@@ -3,7 +3,11 @@ var link2=new Array();
 var k,j,i,userInput, cleanSent, search, list,h,startNum,constantV,calNum,docHeight;
 var filterWords = ["is","are","all", "another", "any", "anybody", "anyone", "anything", "botheach", "each", "other", "either", "everybody", "everyone", "everything", "few", "he", "her", "hers", "herself", "him", "himself", "his", "it", "its", "itself", "many", "me", "mine", "more", "most", "much", "myself", "neither", "no", "one", "nobody", "none", "nothing", "another", "other", "others", "ours", "ourselves", "several", "she", "some", "somebody", "someone", "something", "their", "theirs", "them", "themselves", "these", "they", "this", "those", "us", "we", "what", "whatever", "which", "whichever", "who", "whoever", "whom", "whomever", "whose", "you", "your", "yours", "yourself", "yourselves", "that", "it's", "time", "person", "year", "way", "day", "thing", "man", "world", "life", "hand", "part", "child", "eye", "woman", "place", "work", "week", "case", "point", "government", "company", "number", "group", "problem", "fact", "be", "have", "do", "say", "get", "make", "go", "know", "take", "see", "come", "think", "look", "want", "give", "use", "find", "tell", "ask", "work", "seem", "feel", "try", "leave", "call", "good", "new", "first", "last", "long", "great", "little", "own", "other", "old", "right", "big", "high", "different", "small", "large", "next", "early", "young", "important", "few", "public", "bad", "same", "able", "to", "of", "in", "for", "on", "with", "at", "by", "from", "up", "about", "into", "over", "after", "beneath", "under", "above", "the", "and", "a", "that", "", "it", "not", "he", "as", "you", "this", "but", "his", "they", "her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their", "aboard", "about", "above", "across", "after", "against", "along", "amid", "among", "around", "as", "at", "before", "behind", "below", "beneath", "beside", "besides", "between", "beyond", "but", "by", "concerning", "considering", "despite", "down", "during", "except", "excepting", "excluding", "following", "for", "from", "in", "inside", "into", "like", "minus", "near", "of", "off", "on", "onto", "opposite", "outside", "over", "past", "per", "plus", "regarding", "round", "save", "since", "than", "through", "to", "toward", "towards", "under", "underneath", "unlike", "until", "up", "upon", "versus", "via", "with", "within", "without"];
 var count=0;
+var dfd = $.Deferred();
 
+
+//to disable scroll once it's executed.
+var myScroll=1;
 
 $(document).ready(function () {
     list = $('li');
@@ -54,13 +58,13 @@ $(document).ready(function () {
              constantV=5;
             //reintalize the calNum to display given constant number of images accross the screen
              calNum +=constantV;
-             callAjax(search[j]);
+                callAjax(search[j]);
+             
          }
     }); 
 
-
-     $(window).scroll(function(){   
-               if($(window).scrollTop() + $(window).height() === $(document).height()) {
+     $(document).scroll(function(){   
+               if($(window).scrollTop() + $(window).height() === $(document).height() && myScroll===1) {
                     if(j < search.length){
                      h=0;
                      //To reuse same Array link2 
@@ -70,6 +74,7 @@ $(document).ready(function () {
                     //reintalize the calNum to display given constant number of images accross the screen
                      calNum +=constantV;
                      callAjax(search[j]);
+                     myScroll=0;
                     }
            }
      });
@@ -138,6 +143,7 @@ function show() {
                     }
                 }
                    count=1;
+                   myScroll=1;
          }else{
             k=0;
             //to run the loop if the value of constantV is less then link2.length.
@@ -161,28 +167,15 @@ function show() {
                     '<figcaption>'  + '<p class=withPic>' + search[i] + '</p>' + '</figcaption>' + '</figure>'+'</li>');
                 }
                 k++;
+                
                // $('#what').append('<br>' + 'insideIvalue: ' + i);
                // $('#what').append('<br>' + 'insideKvalue: ' + k);
                // $('#what').append('<br>' + 'insideJvalue: ' + j);
             }
-            // $.each(search,function(key,value) { 
-                    //$('#what').append("[Index :" + key + ','+ ' '+'value :'+ value +']');      // });
+            myScroll=1;
         }
     }
-        /*
-        $(window).scroll(function() {   
-             if(($(window).scrollTop() + $(window).height() === $(document).height()) && j < search.length) {
-              // reset the link2 to reuse it again.
-                link2.length=0;
-                // set variable h to 0 to support link2[h]
-                h=0;
-                constantV=5;
-                //reintalize the startNum to display contact number of images accross the screen
-                calNum +=constantV;
-                callAjax(search[j]);
-           }
-        });
-    */
+  
 
 
 /*
@@ -209,4 +202,5 @@ function preTest() {
     }
     // callAjax(search[j]);
 }
+
 */

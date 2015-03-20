@@ -17,8 +17,8 @@ $(document).ready(function() {
         doc=$(document);
         var docWidth=doc.width();
         docHeight=doc.height();
-        $('p').append("docWidth:" +docWidth + '<br>');
-        $('p').append("docHeight:" + $(document).height()+ '<br>');
+        $('p').append("docWidth:" + docWidth + '<br>');
+        $('p').append("docHeight:" + docHeight + '<br>');
         
         var box=$('#box');
         var boxTop=box.offset().top;
